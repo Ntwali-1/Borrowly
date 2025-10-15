@@ -1,6 +1,5 @@
 package com.example.Borrowly.services;
 
-import com.example.Borrowly.dto.AuthResponse;
 import com.example.Borrowly.dto.SignupRequest;
 import com.example.Borrowly.entity.User;
 import com.example.Borrowly.repositories.UserRepository;
