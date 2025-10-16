@@ -5,6 +5,7 @@ import com.example.Borrowly.dto.enums.Location;
 import com.example.Borrowly.entity.Profile;
 import com.example.Borrowly.entity.User;
 import com.example.Borrowly.repositories.ProfileRepository;
+import com.example.Borrowly.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProfileService {
     private final UserRepository userRepository;
-    private ProfileRepository profileRepository;
+    private final ProfileRepository profileRepository;
 
     public ProfileService(ProfileRepository profileRepository, UserRepository userRepository) {
         this.profileRepository = profileRepository;
@@ -25,7 +26,7 @@ public class ProfileService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
 
-        var user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
 
         Profile profile = new Profile();
         profile.setFirstName(profileRequest.getFirstName());
