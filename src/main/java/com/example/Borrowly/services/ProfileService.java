@@ -34,6 +34,7 @@ public class ProfileService {
         profile.setEmail(email);
         profile.setPhoneNumber(profileRequest.getPhoneNumber());
         profile.setLocation(profileRequest.getLocation());
+        profile.setUser(user);
 
         Profile savedProfile = profileRepository.save(profile);
         return new ResponseEntity<>(savedProfile, HttpStatus.CREATED);
