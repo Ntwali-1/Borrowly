@@ -54,6 +54,7 @@ public class AuthService {
                 )
         );
 
-        return
+        String jwt = jwtService.generateToken(request.getEmail());
+        return ResponseEntity.ok(jwt);
     }
 }
