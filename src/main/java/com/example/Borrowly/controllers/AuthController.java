@@ -1,5 +1,6 @@
 package com.example.Borrowly.controllers;
 
+import com.example.Borrowly.dto.LoginRequest;
 import com.example.Borrowly.dto.SignupRequest;
 import com.example.Borrowly.services.AuthService;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,11 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody  SignupRequest signupRequest) {
          return authService.signup(signupRequest);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
     }
 }
 
