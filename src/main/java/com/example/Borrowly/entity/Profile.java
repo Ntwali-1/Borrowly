@@ -1,5 +1,6 @@
 package com.example.Borrowly.entity;
 
+import com.example.Borrowly.dto.enums.Location;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,9 +9,6 @@ public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne(mappedBy = "profile")
-    private User user;
 
     @Column(nullable = false)
     private String firstName;
@@ -24,6 +22,7 @@ public class Profile {
     @Column(nullable = false)
     private String phoneNumber;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String address;
+    private Location location;
 }
