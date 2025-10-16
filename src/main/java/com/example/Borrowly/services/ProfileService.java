@@ -33,7 +33,7 @@ public class ProfileService {
         profile.setLastName(profileRequest.getLastName());
         profile.setEmail(email);
         profile.setPhoneNumber(profileRequest.getPhoneNumber());
-        profile.setLocation(Location.valueOf(profileRequest.getLocation()));
+        profile.setLocation(profileRequest.getLocation());
 
         Profile savedProfile = profileRepository.save(profile);
         return new ResponseEntity<>(savedProfile, HttpStatus.CREATED);
