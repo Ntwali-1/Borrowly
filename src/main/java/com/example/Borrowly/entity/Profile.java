@@ -25,4 +25,7 @@ public class Profile {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Location location;
+
+    @OneToOne(mappedBy = "profile")
+    private User user;
 }
