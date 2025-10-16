@@ -1,15 +1,37 @@
 package com.example.Borrowly.services;
 
+import com.example.Borrowly.dto.ProfileRequest;
+import com.example.Borrowly.entity.Profile;
+import com.example.Borrowly.entity.User;
 import com.example.Borrowly.repositories.ProfileRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProfileService {
+    private final UserRepository userRepository;
     private ProfileRepository profileRepository;
 
-    public ProfileService(ProfileRepository profileRepository) {
+    public ProfileService(ProfileRepository profileRepository, UserRepository userRepository) {
         this.profileRepository = profileRepository;
+        this.userRepository = userRepository;
     }
 
+    public ResponseEntity<?> createProfile(ProfileRequest profileRequest) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+
+        var user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+
+        Profile profile = new Profile();
+        profile.setFirstName(profileRequest.getFirstName());
+        profile.setLastName(profileRequest.getLastName());
+        profile.setEmail(email);
+        profile.setPhoneNumber(profileRequest.getPhoneNumber());
+        profile.setLocation(profileRequest.getLocation());
+    }
 
 }

@@ -1,6 +1,9 @@
 package com.example.Borrowly.controllers;
 
+import com.example.Borrowly.dto.ProfileRequest;
 import com.example.Borrowly.services.ProfileService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,5 +16,8 @@ public class ProfileController {
         this.profileService = profileService;
     }
 
+    public ResponseEntity<?> createProfile(@RequestBody ProfileRequest profileRequest) {
+        return profileService.createProfile(profileRequest);
+    }
 
 }

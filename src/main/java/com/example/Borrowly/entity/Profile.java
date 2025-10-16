@@ -2,7 +2,11 @@ package com.example.Borrowly.entity;
 
 import com.example.Borrowly.dto.enums.Location;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "profiles")
 public class Profile {
@@ -28,4 +32,5 @@ public class Profile {
 
     @OneToOne(mappedBy = "profile")
     private User user;
+
 }

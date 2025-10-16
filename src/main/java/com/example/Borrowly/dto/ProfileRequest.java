@@ -1,17 +1,14 @@
 package com.example.Borrowly.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 
 public class ProfileRequest {
     String firstName;
     String lastName;
-    String email;
     String phoneNumber;
     String address;
 }
