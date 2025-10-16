@@ -10,5 +10,5 @@ public class ProfileRequest {
     String firstName;
     String lastName;
     String phoneNumber;
-    String address;
+    String location;
 }

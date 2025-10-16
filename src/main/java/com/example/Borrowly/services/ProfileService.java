@@ -1,6 +1,7 @@
 package com.example.Borrowly.services;
 
 import com.example.Borrowly.dto.ProfileRequest;
+import com.example.Borrowly.dto.enums.Location;
 import com.example.Borrowly.entity.Profile;
 import com.example.Borrowly.entity.User;
 import com.example.Borrowly.repositories.ProfileRepository;
@@ -31,7 +32,10 @@ public class ProfileService {
         profile.setLastName(profileRequest.getLastName());
         profile.setEmail(email);
         profile.setPhoneNumber(profileRequest.getPhoneNumber());
-        profile.setLocation(profileRequest.getLocation());
+        profile.setLocation(Location.valueOf(profileRequest.getLocation()));
+
+        Profile savedProfile = profileRepository.save(profile);
+        return new ResponseEntity<>(savedProfile, HttpStatus.CREATED);
     }
 
 }
