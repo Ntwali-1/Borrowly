@@ -30,5 +30,7 @@ public class Profile {
     @Column(nullable = false)
     private Location location;
 
+    @OneToOne(mappedBy = "profile")
+    private User user;
 
 }
