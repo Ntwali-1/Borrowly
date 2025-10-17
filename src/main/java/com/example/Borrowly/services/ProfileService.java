@@ -39,5 +39,4 @@ public class ProfileService {
         Profile savedProfile = profileRepository.save(profile);
         return new ResponseEntity<>(savedProfile, HttpStatus.CREATED);
     }
-
 }
