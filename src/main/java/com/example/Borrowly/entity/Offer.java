@@ -29,4 +29,7 @@ public class Offer {
     @Column(nullable = false)
     private String message;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

@@ -30,7 +30,8 @@ public class Profile {
     @Column(nullable = false)
     private Location location;
 
-    @OneToOne(mappedBy = "profile")
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
 }
