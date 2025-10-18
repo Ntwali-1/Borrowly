@@ -18,6 +18,9 @@ public class Offer {
     private Type type;
 
     @Column(nullable = false)
+    private String itemName;
+
+    @Column(nullable = false)
     private String amount;
 
     @Column(nullable = false)
