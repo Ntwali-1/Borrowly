@@ -36,11 +36,13 @@ public class OfferService {
         try{
             MoneyOffer offer = new MoneyOffer();
 
+            offer.setUserEmail(user.getEmail());
             offer.setAmount(moneyOfferRequest.getAmount());
             offer.setCurrency(moneyOfferRequest.getCurrency());
             offer.setUser(user);
             offer.setInterestRate(moneyOfferRequest.getInterestRate());
             offer.setDuration(moneyOfferRequest.getDuration());
+            offer.setDescription(moneyOfferRequest.getDescription());
 
             MoneyOffer savedOffer = moneyOfferRepository.save(offer);
             return new ResponseEntity<>(savedOffer, HttpStatus.CREATED);

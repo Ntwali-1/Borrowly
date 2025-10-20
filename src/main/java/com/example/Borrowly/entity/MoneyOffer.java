@@ -15,6 +15,9 @@ public class MoneyOffer {
     private Long id;
 
     @Column(nullable = false)
+    private String userEmail;
+
+    @Column(nullable = false)
     private String currency;
 
     @Column(nullable = false)
