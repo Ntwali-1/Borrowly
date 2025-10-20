@@ -27,5 +27,4 @@ public class MoneyOffer {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 }
