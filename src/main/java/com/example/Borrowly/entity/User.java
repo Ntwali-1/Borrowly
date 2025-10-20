@@ -27,5 +27,5 @@ public class User {
     private Profile profile;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Offer> offers;
+    private List<MoneyOffer> offers;
 }
