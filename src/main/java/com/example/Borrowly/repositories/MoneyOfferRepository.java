@@ -1,7 +1,10 @@
 package com.example.Borrowly.repositories;
 
+import com.example.Borrowly.entity.MoneyOffer;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MoneyOfferRepository {
+public interface MoneyOfferRepository extends JpaRepository <MoneyOffer, Long>{
+
 }

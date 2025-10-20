@@ -1,7 +1,11 @@
 package com.example.Borrowly.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "money_offers")
 public class MoneyOffer {
