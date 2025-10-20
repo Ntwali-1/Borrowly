@@ -25,7 +25,7 @@ public class MoneyOffer {
     @Column(nullable = false)
     private String duration;
 
-    @Column()
+    @Column(nullable = false)
     private String description;
 
     @ManyToOne

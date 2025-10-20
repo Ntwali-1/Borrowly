@@ -6,6 +6,7 @@ import com.example.Borrowly.entity.User;
 import com.example.Borrowly.repositories.ItemOfferRepository;
 import com.example.Borrowly.repositories.MoneyOfferRepository;
 import com.example.Borrowly.repositories.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -42,7 +43,7 @@ public class OfferService {
             offer.setDuration(moneyOfferRequest.getDuration());
 
             MoneyOffer savedOffer = moneyOfferRepository.save(offer);
-            return ResponseEntity.ok(savedOffer);
+            return new ResponseEntity<>(savedOffer, HttpStatus.CREATED);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

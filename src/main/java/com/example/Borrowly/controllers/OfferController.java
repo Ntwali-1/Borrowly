@@ -18,17 +18,12 @@ public class OfferController {
 
     private final OfferService offerService;
 
-    public OfferController(OfferService offerService {
+    public OfferController(OfferService offerService) {
         this.offerService = offerService;
     }
 
     @PostMapping("/money")
     public ResponseEntity<?> createMoneyOffer(@RequestBody MoneyOfferRequest moneyOfferRequest) {
         return offerService.createMoneyOffer(moneyOfferRequest);
-    }
-
-    @PostMapping("/item")
-    public ResponseEntity<?> createItemOffer() {
-        return offerService.createItemOffer();
     }
 }
