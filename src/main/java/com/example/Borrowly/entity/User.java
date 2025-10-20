@@ -27,5 +27,8 @@ public class User {
     private Profile profile;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MoneyOffer> offers;
+    private List<MoneyOffer> moneyOffers;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemOffer> itemOffers;
 }

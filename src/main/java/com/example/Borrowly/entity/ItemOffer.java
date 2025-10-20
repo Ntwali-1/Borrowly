@@ -11,4 +11,23 @@ public class ItemOffer {
 
     @Column(nullable = false)
     private String itemName;
+
+    @Column(nullable = false)
+    private String imageUrl;
+
+    @Column(nullable = false)
+    private Double rentPrice;
+
+    @Column(nullable = false)
+    private String currency;
+
+    @Column(nullable = false)
+    private String duration;
+
+    @Column(nullable = false)
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
