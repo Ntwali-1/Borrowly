@@ -10,17 +10,22 @@ public class MoneyOffer {
     private Long id;
 
     @Column(nullable = false)
-    private Double amount;
+    private String currency;
 
     @Column(nullable = false)
-    private String currency;
+    private Double amount;
 
     @Column(nullable = false)
     private String interestRate;
 
+    @Column(nullable = false)
+    private String duration;
+
+    @Column()
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 
 }
