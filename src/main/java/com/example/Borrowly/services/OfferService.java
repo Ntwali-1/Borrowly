@@ -1,6 +1,8 @@
 package com.example.Borrowly.services;
 
+import com.example.Borrowly.dto.ItemOfferRequest;
 import com.example.Borrowly.dto.MoneyOfferRequest;
+import com.example.Borrowly.entity.ItemOffer;
 import com.example.Borrowly.entity.MoneyOffer;
 import com.example.Borrowly.entity.User;
 import com.example.Borrowly.repositories.ItemOfferRepository;
@@ -45,6 +47,31 @@ public class OfferService {
             offer.setDescription(moneyOfferRequest.getDescription());
 
             MoneyOffer savedOffer = moneyOfferRepository.save(offer);
+            return new ResponseEntity<>(savedOffer, HttpStatus.CREATED);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    public ResponseEntity<?> createItemOffer(ItemOfferRequest itemOfferRequest) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+
+        try{
+            ItemOffer offer = new ItemOffer();
+
+            offer.setUserEmail(user.getEmail());
+            offer.setItemName(itemOfferRequest.getItemName());
+            offer.setRentPrice(itemOfferRequest.getRentPrice());
+            offer.setCurrency(itemOfferRequest.getCurrency());
+            offer.setDuration(itemOfferRequest.getDuration());
+            offer.setDescription(itemOfferRequest.getDescription());
+            offer.setImageUrl(itemOfferRequest.getImageUrl());
+            offer.setUser(user);
+
+            ItemOffer savedOffer = itemOfferRepository.save(offer);
             return new ResponseEntity<>(savedOffer, HttpStatus.CREATED);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());

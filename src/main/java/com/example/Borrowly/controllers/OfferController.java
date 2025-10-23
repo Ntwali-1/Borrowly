@@ -26,4 +26,9 @@ public class OfferController {
     public ResponseEntity<?> createMoneyOffer(@RequestBody MoneyOfferRequest moneyOfferRequest) {
         return offerService.createMoneyOffer(moneyOfferRequest);
     }
+
+    @PostMapping("/item")
+    public ResponseEntity<?> createItemOffer(@RequestBody ItemOfferRequest itemOfferRequest) {
+        return offerService.createItemOffer(itemOfferRequest);
+    }
 }
