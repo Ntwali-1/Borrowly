@@ -39,7 +39,8 @@ public class AuthService {
 
            User saved = userRepository.save(user);
 
-           return new ResponseEntity<>(saved, HttpStatus.CREATED);
+           String jwt = jwtService.generateToken(saved.getEmail());
+           return ResponseEntity.ok(jwt);
 
        }catch (Exception e){
            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
