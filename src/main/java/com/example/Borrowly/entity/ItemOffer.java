@@ -1,5 +1,6 @@
 package com.example.Borrowly.entity;
 
+import com.example.Borrowly.dto.enums.Currency;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -20,7 +21,7 @@ public class ItemOffer {
     private Double rentPrice;
 
     @Column(nullable = false)
-    private String currency;
+    private Currency currency;
 
     @Column(nullable = false)
     private String duration;
