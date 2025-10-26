@@ -3,6 +3,8 @@ package com.example.Borrowly.controllers;
 import com.example.Borrowly.dto.ItemOfferRequest;
 import com.example.Borrowly.dto.MoneyOfferRequest;
 import com.example.Borrowly.services.OfferService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
