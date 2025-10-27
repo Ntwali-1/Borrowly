@@ -11,6 +11,7 @@ import com.example.Borrowly.entity.User;
 import com.example.Borrowly.repositories.ItemOfferRepository;
 import com.example.Borrowly.repositories.MoneyOfferRepository;
 import com.example.Borrowly.repositories.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -20,19 +21,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class OfferService {
 
     private final AuthService authService;
     private final MoneyOfferRepository moneyOfferRepository;
     private final ItemOfferRepository itemOfferRepository;
     private final UserRepository userRepository;
-
-    public OfferService(AuthService authService, MoneyOfferRepository moneyOfferRepository, ItemOfferRepository itemOfferRepository, UserRepository userRepository) {
-        this.authService = authService;
-        this.moneyOfferRepository = moneyOfferRepository;
-        this.itemOfferRepository = itemOfferRepository;
-        this.userRepository = userRepository;
-    }
 
     public ResponseEntity<?> createMoneyOffer(MoneyOfferRequest moneyOfferRequest) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

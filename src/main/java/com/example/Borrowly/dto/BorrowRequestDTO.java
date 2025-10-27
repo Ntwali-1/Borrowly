@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class BorrowRequestDTO {
     private Long offerId;
-    private String offerType; // "MONEY" or "ITEM"
+    private String offerType;
     private String message;
 }
 
