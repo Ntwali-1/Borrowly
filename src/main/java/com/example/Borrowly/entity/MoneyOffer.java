@@ -1,6 +1,7 @@
 package com.example.Borrowly.entity;
 
 import com.example.Borrowly.dto.enums.Currency;
+import com.example.Borrowly.dto.enums.OfferStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -32,6 +33,10 @@ public class MoneyOffer {
 
     @Column(nullable = false)
     private String userEmail;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private OfferStatus status = OfferStatus.ACTIVE;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
