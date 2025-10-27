@@ -1,6 +1,7 @@
 package com.example.Borrowly.services;
 
 import com.example.Borrowly.dto.ProfileRequest;
+import com.example.Borrowly.dto.UpdateProfileRequest;
 import com.example.Borrowly.dto.enums.Location;
 import com.example.Borrowly.entity.Profile;
 import com.example.Borrowly.entity.User;
@@ -38,5 +39,36 @@ public class ProfileService {
 
         Profile savedProfile = profileRepository.save(profile);
         return new ResponseEntity<>(savedProfile, HttpStatus.CREATED);
+    }
+
+    public ResponseEntity<?> getMyProfile() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+
+        Profile profile = profileRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Profile not found"));
+        return ResponseEntity.ok(profile);
+    }
+
+    public ResponseEntity<?> getProfileById(Long id) {
+        Profile profile = profileRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Profile not found"));
+        return ResponseEntity.ok(profile);
+    }
+
+    public ResponseEntity<?> updateProfile(UpdateProfileRequest request) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+
+        Profile profile = profileRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Profile not found"));
+
+        if (request.getFirstName() != null) profile.setFirstName(request.getFirstName());
+        if (request.getLastName() != null) profile.setLastName(request.getLastName());
+        if (request.getPhoneNumber() != null) profile.setPhoneNumber(request.getPhoneNumber());
+        if (request.getLocation() != null) profile.setLocation(request.getLocation());
+
+        Profile updatedProfile = profileRepository.save(profile);
+        return ResponseEntity.ok(updatedProfile);
     }
 }
